@@ -58,12 +58,100 @@ h2 {
   width: 85%;
   margin: auto;
   padding: 60px 0;
-  line-height: 2;
-
+  line-height: 2; 
 }
 
+.content-wrap img{
+  margin-top: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 
+.content-wrap h1 h2 p{
+  text-align: center;
+}
 
+.topics {
+  width:100%;
+  position:absolute;
+  margin-bottom: 50px;
+}
+/* -------------------Animation------------ */
+.topics ul{
+  height:50px;
+  float: right;
+}
+
+.topics ul li{
+  display: inline-block;
+  padding:40px 15px;
+  text-transform:uppercase;
+  color: #fff;
+  font-size:20px;
+}
+
+.geometry li{
+  position: absolute;
+  display: block;
+  list-style: none;
+  width:25px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: animate 20s linear infinite;
+  bottom:-150px;
+}
+.geometry li:nth-child(1){
+  left: 86%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.geometry li:nth-child(2){
+  left:12%;
+  width:30px;
+  height:30px;
+  animation-delay:1.5s;
+  animation-duration:10s;
+}
+.geometry li:nth-child(3){
+  left:70%;
+  width:100px;
+  height:100px;
+  animation-delay:5.5s;
+}
+.geometry li:nth-child(4){
+  left:42%;
+  width:150px;
+  height:150px;
+  animation-delay:0s;
+  animation-duration:15s;
+}
+.geometry li:nth-child(5){
+  left:65%;
+  width:40px;
+  height:40px;
+  animation-delay:0s;
+}
+.geometry li:nth-child(6){
+  left:15%;
+  width:110px;
+  height:110px;
+  animation-delay:3.5s;
+}
+@keyframes animate{
+  0%{
+    transform:translateY(0) rotate(0deg);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-800px) rotate(360deg);
+    opacity:0;
+  }
+}
+/*---------------- Animation CLOSE--------- */
 
 .item-details h3 {
   margin-bottom: 0;
@@ -89,6 +177,10 @@ h2 {
   overflow: hidden;
   border-bottom: 1px dashed #343434;
   padding: 25px 0;
+}
+
+.divider img{
+  margin-top: auto;
 }
 
 
@@ -167,6 +259,7 @@ header {
 .education .content-wrap .item-details img{
 float: left;
 }
+
 
 
 /* Contact Info
