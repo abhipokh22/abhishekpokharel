@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek Pokharel</title>
+     <link href="https://fonts.googleapis.com/css?family=Caveat|Montserrat:400,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/flooditreportstyles.css">
+  </head>
+  <body>
+    <main>
+        <header>
+            <div class = "title">
+                <h1>Mathematical Analysis of Flood-It Game</h1>
+                <h5>Dec 12, 2023 <br> By Abhishek Pokharel</h5>
+            </div>
+        </header>
+
+
+        <section class="paragraph">
+            <p>
+                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Flood-it is a single player online game. The game consists of nxn board of square boxes where each square box is filled with one color. The ultimate goal in the game is to make the nxn board filled with the same color. To achieve this goal, a player is given specific number of moves depending upon the nxn size of the board. Two or more than two square boxes in the nxn board is considered connected if they have same color and are adjacent. In the flood-it game we observed, the game begins when the player starts flooding the region from the top left square box. The player chooses a color which then changes the color of all the square box in the monochromatic region connected to the top left corner square box. The flooding phenomena continues by simply changing color of all the square boxes in the region to fill with new color. Eventually the adjacent square boxes with the chosen color will also get connected by expanding the monochromatic region of the nxn board. 
+                <font color = blue> Figure 1</font> depicts the first few move of the Flood-it game for the size 6x6 and color 7.
+
+            </p>
+
+           <center> <img src="images/Figure11.png"> </center>
+            <br>
+
+            <p> 
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                As stated above, the game allows the player only certain number of moves (target) to achieve the uniformity in color. For ‘n’ size and ‘c’ color the target ‘t’ is always different. For instance, for 10 x10 size of 5 colors, the target is 14 but for 10 x 10 size of 8 colors, the target is 23. Similarly, the target still changes if a different size has same number of colors. For instance, for 18 x18 size of 5 colors, the target is 26 unlike 10 x 10 size of 5 colors (Flood-It). The main goal of this research is to find the function that gives us the exact number of targets with the given ‘n’ and ‘c’ on the website. 
+                <br><br> <strong>Lake and Island approach</strong><br>
+                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+	            Initially, we supposed the nxn square box as the lake and non-monochromatic regions were considered island. From this we tried finding the relationship between the perimeter of partial lake and the amount of area enclosed by it. Considering one tiny square box of nxn board, it has perimeter as 4 and area as 1. Likewise, two tiny square boxes have perimeter 6, area 2 and shared edge 1
+                (<font color= blue>Figure 2</font>). Onto which one additional square box was added gradually after testing 
+
+            </p>
+            <center> <img src="images/figure2.png"> </center>
+
+            <p>
+                each of the linear and non-linear shapes. Multiple conjecture came up while considering minimum and maximum shared edges and perimeter. They failed each time we considered new parameter. For instance, a conjecture 4A – 2S = P made form 
+                <font color=blue>Figure 2</font> failed once we considered the usable perimeter, total perimeter, area of island and number of colors. Since the conjectures could not provide the exact perimeter of the conditioned nxn square box, we established the range of perimeter within the maxima and the minima. A formula 2A + 2 = P was proposed as the maxima because all of the cases were the most linear. For minima, a formula Total Area =4√A was proposed because a square is the most compact thing we could get. From this we found the possible range of perimeter. We set up multiple programs in MATLAB considering smallest and largest perimeter floor, number of colors, average area of any color which can be added and active perimeter for static and for non-static we added the weighting factors S and T. The program for non-static looked like this:
+
+            </p>
+           <center> <img src="images/figure3.png"></center>
+
+            <p>
+                Where, n is the size, c is the color, M is average area of any color that can be added, P is the active parameter, S and T are the weighting factors, floor is the round down and +1 is to round up. We tested different ‘i’ with S and T for different n and c to calculate the exact target. However, we were not able to observe the exact pattern that changes in S(i) and T(i) affect in the target. We rejected the Lake and Island approach and started a new one. 
+                <br><br> <strong>The three-dimension approach</strong><br>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                In the three-dimension approach we plotted points in three-dimension space
+                 (<font color=blue>Figure 3</font>). The X-axis represented the number of colors, the Y-axis represented the size of the square board, and the Z-axis represented the target number. We worked on creating a mesh surface from which we expected to approximate the surface to create a function. To start with that, we plotted N vs T for each color. We connected those lines and used the least square method to get best fit lines for the input color. From the least square we tried generating a plane that approximated the surface. 
+
+            </p>
+
+            <center><img src="images/figure4.png"></center>
+
+            <p>
+                Mathematically expressing the above statement with color 4 for size 10x10, 14x14, 18x18 and 22x22 of target 11, 16, 21, and 26 respectively. We followed the similar idea for c = 5 and c =6. Hence, we plotted: 
+<br>A= (4, 10,11), (4,14,16), (4,18,21), and (4,22,26) => Red in Figure 4
+<br>B= (5,10,14), (5,14,20), (5,18,26), and (5,22,32) => Blue in Figure 4
+<br>C= (6,10,17), (6,14,25), (6,18,32) and (6,22,39) => Green in Figure 4
+
+            </p>
+
+            <center><img src="images/figure5.png"></center>
+            <p>
+                From these points we used the least square method to get best fit lines. In which we used n and t and the lines turned out to be almost perfect. Now, we took three points from which we generated two vectors whose cross product gave us a normal vector for our plane. Using three points P = (5,14,20), Q = (5,18,26) and R = (4, 14,16) we obtained an equation as follows: 
+    <br>z=4x+3/2 y-21
+    <br>i.e.  T=4c+3/2 N-21
+	<br>We conjectured that this equation could be a good approximation for the function. The points were plugged in with this function and the results were nearly equal but not equal to the actual target. We observed that as ‘c’ is increased, and ‘n’ is fixed the target increased and with the ‘n’ increased and ‘c’ fixed the target still increased. On the contrary, we tried C vs T for the least square line and observed that the lines were more deviated comparing to N vs T. Hence, we started finding more point of tangency to see if it differs dramatically from the plane formula, we obtained for (5,14,20). We added more data points because it suggested that there would be curving points on the cylinder. From these data points we took neighboring points for point of tangency and observed how it changed with higher c and n. 
+	After adding more data points, we conjectured that for a fixed value of N, if we choose    P = (C, N, T) as the point of tangency then the formula T = AC +BN + D should produce a correct T for any C. The reason behind is that, with different point of tangency we obtained different equation for T. In addition to the cross product of vector, the angles between those normal vectors were obtained. If they are parallel, then they the plane we obtained would be a flat plane. However, the normal vectors are not parallel so finding the angle helped us find out how much they deviate and which direction they go to. We know, 
+cosine θ=(a.b)/|a||b| 
+Following this concept, the dot product and the length between the normal vectors were calculated. From which the cosine angle was obtained. 
+	Mathematically expressing the above statement. Let us consider P (5,10,14), Q (5,14, 20) and R (4,10,11) then normal vector was calculated which was N1 (-12, -6,4). Likewise, for A (5,14,20), B (5,18,26) and C (4,14,16) we obtained the normal vector N2 (-16, -6,4) and for X (6,18,32), Y (6,22,39), and Z (5,18,26) the normal vector was N3 (-24,-7,4). Plotting N1, N2 and N3 we obtained figure 5. Then the length of N1 was 14, N2 was 2√77 and finally the dot product of N1 and N2 was 244. The angle obtained was 6.741919759 degrees depicted in figure 6. 
+
+            </p>
+           <center><img src="images/figure6.png"></center>
+            <p>
+                Similarly, the angle between different normal vectors were obtained in the same color and they varied with a small change. With the different color the angle changed drastically which was approximately similar through the different size in same color. The conjecture was in the same color ‘c’ and changing the size ‘n’ will change the with θdegree.
+Conclusion
+	To sum up, we were not able to find the exact mathematical algorithm on how Flood-it works. However, we were able to find the pattern the game follows in different conditions. We concluded that in a three-dimensional plane, if we choose P = (C, N, T) as the point of tangency then the formula T = AC +BN + D should produce a correct T for any C. where, C is number of colors used, N is the size of the grid and T is the target. Likewise, the angle of the two normal vectors within the same color is almost similar whilst the degree changes with the change in number of colors. 
+
+            </p>
+        </section>
