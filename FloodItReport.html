@@ -6,22 +6,27 @@
     <title>Abhishek Pokharel</title>
      <link href="https://fonts.googleapis.com/css?family=Caveat|Montserrat:400,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/flooditreportstyles.css">
-  </head>
+ 
+</head>
   <body>
     <main>
         <header>
+            <a href="index.html"> &#8592; HOME PAGE</a> 
             <div class = "title">
                 <h1>Mathematical Analysis of Flood-It Game</h1>
-                <h5>Dec 12, 2023 <br> By Abhishek Pokharel</h5>
+                <h5>June 13, 2023 <br> By Abhishek Pokharel <br> Supervisor: <a href="https://www.sjny.edu/directory/faculty/david-seppala-holtzman" target="_blank"> Professor David Seppala-Holtzman, PhD</a></h5>
             </div>
         </header>
 
 
         <section class="paragraph">
             <p>
-                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Flood-it is a single player online game. The game consists of nxn board of square boxes where each square box is filled with one color. The ultimate goal in the game is to make the nxn board filled with the same color. To achieve this goal, a player is given specific number of moves depending upon the nxn size of the board. Two or more than two square boxes in the nxn board is considered connected if they have same color and are adjacent. In the flood-it game we observed, the game begins when the player starts flooding the region from the top left square box. The player chooses a color which then changes the color of all the square box in the monochromatic region connected to the top left corner square box. The flooding phenomena continues by simply changing color of all the square boxes in the region to fill with new color. Eventually the adjacent square boxes with the chosen color will also get connected by expanding the monochromatic region of the nxn board. 
-                <font color = blue> Figure 1</font> depicts the first few move of the Flood-it game for the size 6x6 and color 7.
-
+                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Flood-It is an engaging single-player online game that challenges players to fill an nxn board with a single color. The game board consists of square boxes, each initially filled with a different color. The player's objective is to use a limited number of moves, determined by the size of the board, to transform the entire nxn board into a uniform color.
+                <br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+                In Flood-It, two or more square boxes are considered connected if they share the same color and are adjacent to each other. The game begins with the player initiating the flooding process from the top left corner square box. The player selects a color, which then spreads throughout the connected monochromatic region, changing the color of all the square boxes within that region. The flooding process continues as the player fills the region with the newly chosen color.
+                <br> &nbsp; &nbsp;&nbsp; &nbsp;
+                As the monochromatic region expands, the adjacent square boxes with the selected color become connected, gradually encompassing a larger portion of the nxn board. By strategically choosing colors and efficiently expanding the connected regions, the player aims to achieve the goal of filling the entire nxn board with the same color.
+                <font color = blue> Figure 1</font> illustrates the initial moves of the Flood-It game, showcasing the gameplay for a 6x6 board with 7 different colors available.
             </p>
 
            <center> <img src="images/Figure11.png"> </center>
@@ -29,34 +34,48 @@
 
             <p> 
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                As stated above, the game allows the player only certain number of moves (target) to achieve the uniformity in color. For ‘n’ size and ‘c’ color the target ‘t’ is always different. For instance, for 10 x10 size of 5 colors, the target is 14 but for 10 x 10 size of 8 colors, the target is 23. Similarly, the target still changes if a different size has same number of colors. For instance, for 18 x18 size of 5 colors, the target is 26 unlike 10 x 10 size of 5 colors (Flood-It). The main goal of this research is to find the function that gives us the exact number of targets with the given ‘n’ and ‘c’ on the website. 
+                In the Flood-It game, the player is challenged to achieve color uniformity on the game board within a specified number of moves, known as the target. The target value, denoted as 't', varies depending on the size of the board ('n') and the number of available colors ('c').
+For example, when playing on a 10x10 board with 5 colors, the target is 14 moves. However, if the same 10x10 board has 8 colors, the target increases to 23 moves. Furthermore, the target value can differ even when the number of colors remains the same but the board size changes. For instance, on an 18x18 board with 5 colors, the target becomes 26 moves, unlike the 10x10 board with 5 colors.
+<br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+The objective of this research is to determine the underlying function that precisely calculates the target value based on the given board size ('n') and number of colors ('c') on the game's website.
+                
                 <br><br> <strong>Lake and Island approach</strong><br>
                 &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-	            Initially, we supposed the nxn square box as the lake and non-monochromatic regions were considered island. From this we tried finding the relationship between the perimeter of partial lake and the amount of area enclosed by it. Considering one tiny square box of nxn board, it has perimeter as 4 and area as 1. Likewise, two tiny square boxes have perimeter 6, area 2 and shared edge 1
-                (<font color= blue>Figure 2</font>). Onto which one additional square box was added gradually after testing 
-
+	            The Lake and Island approach was initially employed to analyze the relationship between the perimeter of the partial lake (non-monochromatic regions) and the enclosed area. We conceptualized the nxn square box as a lake, with non-monochromatic regions representing islands. 
+                <br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+                To investigate this relationship, we examined individual tiny square boxes on the nxn board. Each tiny square box has a perimeter of 4 and an area of 1. As we progressed, we gradually added additional square boxes, considering both linear and non-linear shapes. We explored various conjectures, including the relationship between the perimeter (P), area (A), and shared edges (S).
             </p>
             <center> <img src="images/figure2.png"> </center>
 
             <p>
-                each of the linear and non-linear shapes. Multiple conjecture came up while considering minimum and maximum shared edges and perimeter. They failed each time we considered new parameter. For instance, a conjecture 4A – 2S = P made form 
-                <font color=blue>Figure 2</font> failed once we considered the usable perimeter, total perimeter, area of island and number of colors. Since the conjectures could not provide the exact perimeter of the conditioned nxn square box, we established the range of perimeter within the maxima and the minima. A formula 2A + 2 = P was proposed as the maxima because all of the cases were the most linear. For minima, a formula Total Area =4√A was proposed because a square is the most compact thing we could get. From this we found the possible range of perimeter. We set up multiple programs in MATLAB considering smallest and largest perimeter floor, number of colors, average area of any color which can be added and active perimeter for static and for non-static we added the weighting factors S and T. The program for non-static looked like this:
-
+                However, these conjectures failed to provide an exact perimeter for the conditioned nxn square box when we considered additional parameters such as usable perimeter, total perimeter, island area, and the number of colors. For instance, a conjecture 4A – 2S = P made form 
+                (<font color= blue>Figure 2</font>) failed once we considered the usable perimeter, total perimeter, area of island and number of colors. Consequently, we determined the range of the perimeter by establishing a maximum and minimum value.
+                <br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+                For the maximum perimeter, we proposed the formula 2A + 2 = P, as it accounted for the most linear cases. For the minimum perimeter, we suggested the formula Total Area = 4√A, based on the idea that a square is the most compact shape. By using these formulas, we derived the possible range of the perimeter.
+                <br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+                To further explore this concept, we developed multiple programs in MATLAB. These programs considered factors such as the smallest and largest perimeter (floored values), number of colors, average area of any color that could be added, and active perimeter. In the case of non-static programs, we introduced weighting factors such as S and T. The program for non-static looked like this:
             </p>
+            
+            
            <center> <img src="images/figure3.png"></center>
 
             <p>
                 Where, n is the size, c is the color, M is average area of any color that can be added, P is the active parameter, S and T are the weighting factors, floor is the round down and +1 is to round up. We tested different ‘i’ with S and T for different n and c to calculate the exact target. However, we were not able to observe the exact pattern that changes in S(i) and T(i) affect in the target. We rejected the Lake and Island approach and started a new one. 
                 <br><br> <strong>The three-dimension approach</strong><br>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                In the three-dimension approach we plotted points in three-dimension space
-                 (<font color=blue>Figure 3</font>). The X-axis represented the number of colors, the Y-axis represented the size of the square board, and the Z-axis represented the target number. We worked on creating a mesh surface from which we expected to approximate the surface to create a function. To start with that, we plotted N vs T for each color. We connected those lines and used the least square method to get best fit lines for the input color. From the least square we tried generating a plane that approximated the surface. 
+                In the three-dimensional approach, we adopted a different method by plotting points in a three-dimensional space 
+                (<font color=blue>Figure 3</font>).
+                This approach aimed to analyze the relationship between the number of colors (X-axis), the size of the square board (Y-axis), and the corresponding target number (Z-axis).
 
+                <br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+                To begin, we plotted the values of 'N' (size) against 'T' (target) for each color. These data points were connected to form lines. We then utilized the least squares method to obtain the best-fit lines for each color.
+                <br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+                Using the least squares approach, we attempted to generate a plane that approximated the entire surface. This plane would provide an estimation of the relationship between the number of colors, the size of the board, and the target number.
             </p>
 
             <center><img src="images/figure4.png"></center>
 
-            <p>
+            <p> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
                 Mathematically expressing the above statement with color 4 for size 10x10, 14x14, 18x18 and 22x22 of target 11, 16, 21, and 26 respectively. We followed the similar idea for c = 5 and c =6. Hence, we plotted: 
 <br>A= (4, 10,11), (4,14,16), (4,18,21), and (4,22,26) => Red in Figure 4
 <br>B= (5,10,14), (5,14,20), (5,18,26), and (5,22,32) => Blue in Figure 4
@@ -67,20 +86,26 @@
             <center><img src="images/figure5.png"></center>
             <p>
                 From these points we used the least square method to get best fit lines. In which we used n and t and the lines turned out to be almost perfect. Now, we took three points from which we generated two vectors whose cross product gave us a normal vector for our plane. Using three points P = (5,14,20), Q = (5,18,26) and R = (4, 14,16) we obtained an equation as follows: 
-    <br>z=4x+3/2 y-21
-    <br>i.e.  T=4c+3/2 N-21
-	<br>We conjectured that this equation could be a good approximation for the function. The points were plugged in with this function and the results were nearly equal but not equal to the actual target. We observed that as ‘c’ is increased, and ‘n’ is fixed the target increased and with the ‘n’ increased and ‘c’ fixed the target still increased. On the contrary, we tried C vs T for the least square line and observed that the lines were more deviated comparing to N vs T. Hence, we started finding more point of tangency to see if it differs dramatically from the plane formula, we obtained for (5,14,20). We added more data points because it suggested that there would be curving points on the cylinder. From these data points we took neighboring points for point of tangency and observed how it changed with higher c and n. 
-	After adding more data points, we conjectured that for a fixed value of N, if we choose    P = (C, N, T) as the point of tangency then the formula T = AC +BN + D should produce a correct T for any C. The reason behind is that, with different point of tangency we obtained different equation for T. In addition to the cross product of vector, the angles between those normal vectors were obtained. If they are parallel, then they the plane we obtained would be a flat plane. However, the normal vectors are not parallel so finding the angle helped us find out how much they deviate and which direction they go to. We know, 
-cosine θ=(a.b)/|a||b| 
-Following this concept, the dot product and the length between the normal vectors were calculated. From which the cosine angle was obtained. 
-	Mathematically expressing the above statement. Let us consider P (5,10,14), Q (5,14, 20) and R (4,10,11) then normal vector was calculated which was N1 (-12, -6,4). Likewise, for A (5,14,20), B (5,18,26) and C (4,14,16) we obtained the normal vector N2 (-16, -6,4) and for X (6,18,32), Y (6,22,39), and Z (5,18,26) the normal vector was N3 (-24,-7,4). Plotting N1, N2 and N3 we obtained figure 5. Then the length of N1 was 14, N2 was 2√77 and finally the dot product of N1 and N2 was 244. The angle obtained was 6.741919759 degrees depicted in figure 6. 
-
+    <br> <center>z = 4x + <sup>3</sup>&frasl;<sub>2</sub> y - 21</center>
+    <br> <center>i.e. T = 4c + <sup>3</sup>&frasl;<sub>2</sub>N - 21</center>
+    
+	<br>  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; We conjectured that this equation could be a good approximation for the function. By plugging in the data points into this equation, we obtained results that were close to, but not exactly equal to, the actual target values.
+    <br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; During our analysis, we noticed that when the number of colors ('c') increased while keeping the size ('n') fixed, the target also increased. Similarly, when the size of the board increased while maintaining a fixed number of colors, the target exhibited an upward trend.
+    <br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; To further investigate, we examined the relationship between the number of colors ('C') and the target ('T') using the least squares method. However, we observed that the resulting lines deviated more compared to the relationship between size ('N') and target ('T').
+    <br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Consequently, we sought additional points of tangency to explore if they significantly differed from the plane formula we derived earlier (specifically for the case of (5,14,20)). We collected more data points, as it indicated the presence of curving points on the cylinder. These new data points allowed us to consider neighboring points for identifying points of tangency, enabling us to observe how they changed with higher values of 'c' and 'n'.
+    <br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;By incorporating additional data points into our analysis, we made a conjecture that for a fixed value of 'N', selecting the point of tangency as 'P = (C, N, T)' would allow the formula 'T = AC + BN + D' to accurately determine 'T' for any value of 'C'. We arrived at this conjecture by observing that different points of tangency resulted in different equations for 'T'.
+    <br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Furthermore, we examined the cross product of vectors and determined the angles between their respective normal vectors. If these normal vectors were parallel, it would indicate a flat plane. However, since the normal vectors were not parallel, we utilized the angles to understand the degree of deviation and the direction in which they diverged.
+    <br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; These angle measurements provided valuable insights into the relationship between the normal vectors, allowing us to better understand how much they deviated and in which direction they trended. We know,
+   <br> <center>cosine θ=<sup>(a.b)</sup>&frasl;<sub>|a||b|</sub> </center> 
+   <br>Following this concept, the dot product and the length between the normal vectors were calculated. From which the cosine angle was obtained. 
+   <br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Mathematically expressing the above statement. Let us consider P (5,10,14), Q (5,14, 20) and R (4,10,11) then normal vector was calculated which was N1 (-12, -6,4). Likewise, for A (5,14,20), B (5,18,26) and C (4,14,16) we obtained the normal vector N2 (-16, -6,4) and for X (6,18,32), Y (6,22,39), and Z (5,18,26) the normal vector was N3 (-24, -7, 4). Plotting N1, N2 and N3 we obtained 
+   <font color="blue">Figure 5</font>. Then the length of N1 was 14, N2 was 2√77 and finally the dot product of N1 and N2 was 244. The angle obtained was 6.741919759 degrees depicted in 
+   <font color="blue">Figure 6</font>.
             </p>
            <center><img src="images/figure6.png"></center>
             <p>
-                Similarly, the angle between different normal vectors were obtained in the same color and they varied with a small change. With the different color the angle changed drastically which was approximately similar through the different size in same color. The conjecture was in the same color ‘c’ and changing the size ‘n’ will change the with θdegree.
-Conclusion
-	To sum up, we were not able to find the exact mathematical algorithm on how Flood-it works. However, we were able to find the pattern the game follows in different conditions. We concluded that in a three-dimensional plane, if we choose P = (C, N, T) as the point of tangency then the formula T = AC +BN + D should produce a correct T for any C. where, C is number of colors used, N is the size of the grid and T is the target. Likewise, the angle of the two normal vectors within the same color is almost similar whilst the degree changes with the change in number of colors. 
-
+                <br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Similarly, the angle between different normal vectors were obtained in the same color and they varied with a small change. With the different color the angle changed drastically which was approximately similar through the different size in same color. The conjecture was in the same color ‘c’ and changing the size ‘n’ will change the with θdegree.
+<br> <br> <strong>Conclusion</strong>
+<br> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;In summary, we were unable to discover the exact mathematical algorithm underlying how Flood-it operates. Nevertheless, we successfully identified the patterns that the game follows under different conditions. Through our analysis, we reached the conclusion that within a three-dimensional plane, selecting 'P = (C, N, T)' as the point of tangency allows the formula 'T = AC + BN + D' to accurately calculate 'T' for any given 'C'. Here, 'C' represents the number of colors used, 'N' denotes the size of the grid, and 'T' signifies the target. Additionally, we observed that the angle between the two normal vectors within the same color category remains relatively consistent, although the specific degree of the angle changes as the number of colors varies.
             </p>
         </section>

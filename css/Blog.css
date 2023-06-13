@@ -1,0 +1,48 @@
+html{
+    
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+}
+body{
+    background-image: url('/images/blog_background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 30px;
+}
+
+.construction-image {
+    margin-top: 50px;
+    max-width: 500px;
+}
+
+.message {
+    margin-top: 50px;
+    font-size: 24px;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.blinking {
+    animation: blink 1s infinite;
+}

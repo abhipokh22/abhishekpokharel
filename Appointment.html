@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon...</title>
+  <link rel="stylesheet" href="css/appointment.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Coming Soon</h1>
+    <p>The appointment page is designed specifically for students seeking tutoring in 
+        Mathematics and Computer Science courses up to the college level. I am currently working on the full version of the page to provide you with
+        even more features and resources. In the meantime, if you have any inquiries
+        or would like to schedule a tutoring session, please do not hesitate to contact me at
+        <br><a href="mailto: apokhrel90@gmail.com">apokhrel90@gmail.com</a> <br> <br> Stay tuned for updates and exciting additions!
+    </p>
+    <div class="countdown">
+      <span id="days">00</span>
+      <span id="hours">00</span>
+      <span id="minutes">00</span>
+      <span id="seconds">00</span>
+    </div>
+    <div class="social-icons">
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <script>
+    // Set the countdown date
+    const countdownDate = new Date("2023-07-01T00:00:00Z").getTime();
+
+    // Update the countdown every second
+    const countdownTimer = setInterval(updateCountdown, 1000);
+
+    function updateCountdown() {
+      // Get current date and time
+      const now = new Date().getTime();
+
+      // Calculate the remaining time
+      const distance = countdownDate - now;
+
+      // Calculate days, hours, minutes, and seconds
+      const days = Math.floor(distance / (1000 * 60 * 60* 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  // Display the countdown
+  document.querySelector("#days").textContent = formatTime(days);
+  document.querySelector("#hours").textContent = formatTime(hours);
+  document.querySelector("#minutes").textContent = formatTime(minutes);
+  document.querySelector("#seconds").textContent = formatTime(seconds);
+
+  // Format time to have leading zeros
+  function formatTime(time) {
+    return time < 10 ? `0${time}` : time;
+  }
+
+  // Clear the countdown timer when the countdown ends
+  if (distance < 0) {
+    clearInterval(countdownTimer);
+    document.querySelector(".countdown").textContent = "The wait is over!";
+  }
+}
+</script>
+</body>
+</html>
